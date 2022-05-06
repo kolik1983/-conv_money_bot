@@ -29,7 +29,7 @@ class MoneyConverter:
             raise APIException(f'Неверно введено число {amount}.')
 
         r = requests.get(f'https://min-api.cryptocompare.com/data/price?fsym={quote_ticer}&tsyms={base_ticer}')
-        all_base = json.loads(r.content)[money_keys[base]]
+        all_base = (json.loads(r.content)[money_keys[base]]) * amount
 
         return all_base
 
